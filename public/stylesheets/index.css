@@ -1,0 +1,38 @@
+body {
+  margin: 50px;
+  font-family: Helvetica, sans-serif;
+  font-size: 150%;
+  background-color: black;
+  color: white;
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+h2 {
+  margin-left: 2rem;
+}
+
+h3 {
+  margin-left: 4rem;
+}
+
+h4 {
+  margin-left: 6rem;
+}
+
+h5 {
+  margin-left: 8rem;
+}
+
+p {
+  margin-left: 10rem;
+  font-size: medium;
+}
+
+#info {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+  font-size: medium;
+  margin-left: 0px;
+}
