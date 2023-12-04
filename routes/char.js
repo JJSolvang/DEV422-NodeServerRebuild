@@ -359,7 +359,7 @@ charRouter.post('/whole', async (req, res) => {
     char._id = id;
     char.charactersShard = 7;
     chars.insertOne(char);
-    res.send({message : "true", _id: id});
+    res.send({message: id});
   }
   catch (err) {
     res.send({message: err});
