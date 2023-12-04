@@ -6,7 +6,7 @@ const { MongoClient } = require("mongodb");
 const client = new MongoClient(readWritePrimary);
 client.connect(); // Has to connect before selecting db
 const db = client.db("dnddb");
-const chars = db.collection('chars');
+const chars = db.collection('characters');
 const ObjectId = require('mongodb').ObjectId;
 
 charRouter.get('/', async (req, res) => {
