@@ -355,10 +355,10 @@ charRouter.post('/unfavorite', async (req, res) =>  {
 charRouter.post('/whole', async (req, res) => {
   try {
     var id = new ObjectId();
-    var char = req.body;
-    char.char._id = id;
-    char.char.charactersShard = 7;
-    chars.insertOne(char.char);
+    var char = req.body.char;
+    char._id = id;
+    char.charactersShard = 7;
+    chars.insertOne(char);
     res.send({message : "true", _id: id});
   }
   catch (err) {
@@ -368,9 +368,15 @@ charRouter.post('/whole', async (req, res) => {
 
 charRouter.post('/wupdate', async (req, res) => {
   try {
-    var char = req.body;
-    chars.findOneAndReplace({_id : char.char._id}, char.char);
-    res.send({message : "true", _id : char.char._id});
+    var char = req.body.char;
+    var convertedId = new ObjectId(char._id);
+    var result = await chars.findOne({_id: convertedId});
+    if (result != null) {
+      chars.deleteOne({_id: convertedId});
+
+      chars.insertOne(char.char);
+      res.send({message : "true", _id : char._id});
+    }
   }
   catch (err) {
     res.send({message: err});
