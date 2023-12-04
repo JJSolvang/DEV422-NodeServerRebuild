@@ -374,8 +374,11 @@ charRouter.post('/wupdate', async (req, res) => {
     if (result != null) {
       chars.deleteOne({_id: convertedId});
 
-      chars.insertOne(char.char);
-      res.send({message : char._id});
+      var id = new ObjectId();
+      char._id = id;
+      char.charactersShard = 7;
+      chars.insertOne(char);
+      res.send({message : "true", _id : char._id});
     }
   }
   catch (err) {
