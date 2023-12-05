@@ -142,7 +142,7 @@ charRouter.post('/testFill', async (req, res) => {
         
         backstory: 'likes to hit things',
 
-        charactersShard: 4
+        charactersShard: 2
       }
       charArray.push(char);
     }
@@ -237,7 +237,7 @@ charRouter.post('/testWizard', async (req, res) => {
         
         backstory: 'likes to hit things',
 
-        charactersShard: 4
+        charactersShard: 2
       }
       charArray.push(char);
     }
@@ -357,7 +357,7 @@ charRouter.post('/whole', async (req, res) => {
     var id = new ObjectId();
     var char = req.body.char;
     char._id = id;
-    char.charactersShard = 7;
+    char.charactersShard = 1;
     chars.insertOne(char);
     res.send({message: id});
   }
@@ -375,7 +375,7 @@ charRouter.post('/wupdate', async (req, res) => {
       chars.deleteOne({_id: convertedId});
 
       char._id = new ObjectId();
-      char.charactersShard = 7;
+      char.charactersShard = 1;
       chars.insertOne(char);
       res.send({message : "true", _id : char._id});
     }
